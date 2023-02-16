@@ -53,10 +53,7 @@ void loop() {
 
   // Print out the blink rate to serial
   Serial.println(blinkRateInMs);
-
   // Serial.println("Min:0,Max:5000");
-  // Slow down serial port processing (so data input in slower)
-  delay(50);
 }
 
 // Handles updating our Blink Time in MS
