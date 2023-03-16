@@ -43,8 +43,6 @@ void updateSensorValues() {
 // and separated by by "#"
 // Results in a string sent over serial that looks something like:
 // "button1:1#button2:0#pot1:500"
-const String KEY_VALUE_DELIMITER = ":";
-const String KV_PAIR_DELIMITER = "#";
 
 void sendDataMessageOverSerial() {
   // Create a KV pair
