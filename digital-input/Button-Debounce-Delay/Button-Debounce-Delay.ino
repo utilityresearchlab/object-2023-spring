@@ -28,10 +28,13 @@ void loop() {
 
     // Did our switch state settle?
     if (buttonState == debouncedState) {
-      // If so, we update our global button state and say what the new state is: 
+      // If so, we update our global button state and say what the 
+      // new state is: 
       String pressedString = (buttonState) ? "Pressed" : "NOT Pressed!";
       Serial.println("The Button is now: " + pressedString);
       prevButtonState = buttonState;
     }
   }
 }
+
+
