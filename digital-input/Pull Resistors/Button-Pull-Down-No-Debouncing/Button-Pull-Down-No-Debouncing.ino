@@ -1,10 +1,8 @@
 
-const int INPUT_BUTTON_PIN = 8;
-const int LED_PIN = 12;
+const int INPUT_BUTTON_PIN = 12;
 
 void setup() {
   pinMode(INPUT_BUTTON_PIN, INPUT);
-  pinMode(LED_PIN, OUTPUT);
   Serial.begin(9600); // for printing values to console
 }
 
