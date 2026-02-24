@@ -6,7 +6,7 @@ const int POT_1_PIN = A1;
 
 // Serial Data Message Delimiters
 const String KEY_VALUE_DELIMITER = ":";
-const String KV_PAIR_DELIMITER = "#";
+const String KV_PAIR_DELIMITER = ",";
 
 // Variables to hold sensor values
 int button1Value;
