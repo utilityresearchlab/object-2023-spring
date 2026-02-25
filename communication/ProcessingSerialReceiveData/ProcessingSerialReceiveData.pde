@@ -20,10 +20,10 @@ Serial SERIAL_PORT;
 // Note `final` is like `const` in Arduino. Once declared, final/const variables cannot be changed/edited
 // We use these delimiters when sending data from the Arduino side, and once we received the data in processing
 // we use these delimiters to recover the key/value pairs of data
-// for example, we could send the following string from the arduino: "pot:923#button1:0#joystickX:500#joystickY:800",
+// for example, we could send the following string from the arduino: "pot:923,button1:0,joystickX:500,joystickY:800",
 // Once received we can split the string up to recover the respective values
 final String KEY_VALUE_DELIMITER = ":";
-final String KV_PAIR_DELIMITER = "#";
+final String KV_PAIR_DELIMITER = ",";
 
 // Circle display variables
 int circleSize = 20;
@@ -184,7 +184,7 @@ void parseSerialDataMultipleKeyValuePairs(String inputData) {
   }
   
   // After we're done we can gets a value out  of the hashmap and provide 0 as a default value in case there is no corresponding key in the hashmap
-  String circleKey = "sensor1";
+  String circleKey = "pot1";
   int newCircleSize = keyValuePairsMap.getOrDefault(circleKey, 0);
   circleSize = newCircleSize;
   println("New circleSize: " + newCircleSize);

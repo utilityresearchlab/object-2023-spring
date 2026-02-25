@@ -39,32 +39,46 @@ void updateSensorValues() {
   pot1Value = analogRead(POT_1_PIN);
 }
 
+
+
+
 // Now send a data message consisting of multiple inputs as key:value pairs
 // and separated by by "#"
 // Results in a string sent over serial that looks something like:
-// "button1:1#button2:0#pot1:500"
+// "button1:1,button2:0,pot1:500"
 
+// Serial Data Message Delimiters
+const String KEY_VALUE_DELIMITER = ":";
+const String KV_PAIR_DELIMITER = ",";
 void sendDataMessageOverSerial() {
   // Create a KV pair
-  Serial.print("button1");
+  Serial.print("b1");
   Serial.print(KEY_VALUE_DELIMITER);
   Serial.print(button1Value); 
   
-  // Separate the next and previous KV Pair with a "#"
+  // Separate the next and previous KV Pair with a ","
   Serial.print(KV_PAIR_DELIMITER);
 
   // Create a KV pair
-  Serial.print("button2");
+  Serial.print("b2");
   Serial.print(KEY_VALUE_DELIMITER);
   Serial.print(button2Value); 
 
-  // Separate the next and previous KV Pair with a "#"
+  // Separate the next and previous KV Pair with a ","
   Serial.print(KV_PAIR_DELIMITER);
 
-  Serial.print("pot1");
+  Serial.print("p1");
   Serial.print(KEY_VALUE_DELIMITER);
   Serial.print(button2Value); 
 
   // End Message with new line
   Serial.println();
 }
+
+
+
+
+
+
+
+
