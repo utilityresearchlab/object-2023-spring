@@ -4,7 +4,7 @@ import java.util.concurrent.*;
 import java.util.Map;
 import java.util.Set.*;
 
-// The serial port (same as what is used on the Arduino Sketch)
+// The serial port (this much match the baud rate used in your Arduino Sketch)
 final int BAUD_RATE = 9600;
 
 // Change index this to match your Arduino's port name. You can see the options in the console once you start the
@@ -12,7 +12,7 @@ final int BAUD_RATE = 9600;
 // [0] "/dev/tty.usbModem1230" : the index for this name would be '0'.
 // Note that you may have multiple usb devices named usbModemXXX and you will have to determine which one is the Arduino
 // you can get the name of our arduino from the Arduino IDE when selecting the board/port.
-int SERIAL_PORT_INDEX = 1;
+int SERIAL_PORT_INDEX = 0;
 
 // Variable to store the Serial Port once we initialize it
 Serial SERIAL_PORT;
@@ -68,10 +68,13 @@ void draw () {
   fill(circleColor);
   
   // Parse any input serial data
+  try {
   //parseSerialDataBasic(inputSerialDataString);
-  parseSerialDataKeyValue(inputSerialDataString);
-  //parseSerialDataMultipleKeyValuePairs(inputSerialDataString);
-
+  //parseSerialDataKeyValue(inputSerialDataString);
+    parseSerialDataMultipleKeyValuePairs(inputSerialDataString);
+  } catch (Exception e) {
+    println("> ERROR: Failed to parse input string: '" + inputSerialDataString + "'  with exception: " + e.toString()); 
+  }
   // Draw the shape with the parsed date
   int xPos = width / 2;
   int yPos = height / 2 ;
@@ -184,7 +187,7 @@ void parseSerialDataMultipleKeyValuePairs(String inputData) {
   }
   
   // After we're done we can gets a value out  of the hashmap and provide 0 as a default value in case there is no corresponding key in the hashmap
-  String circleKey = "pot1";
+  String circleKey = "p1";
   int newCircleSize = keyValuePairsMap.getOrDefault(circleKey, 0);
   circleSize = newCircleSize;
   println("New circleSize: " + newCircleSize);
